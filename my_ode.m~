@@ -1,14 +1,15 @@
 function [dy] = my_ode(t,y,m,B,Fe,ft,check_collision)
-global FTpair
+global F_input t_input
 if check_collision == true
     Fcoll = collision_check(y(1));
 else
-    Fcoll = 0.0;
+    Fcoll = 0.
 end
 F = interp1(ft,Fe,t);
 F = F - Fcoll;
 
-FTpair = [FTpair,[F;t]];
+F_input = [F_input,F];
+t_input = [t_input t];
 dy = zeros(2,1);
 dy(1) = y(2);
 dy(2) = (F - B * y(2)) / m;

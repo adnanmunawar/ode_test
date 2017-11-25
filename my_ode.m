@@ -5,8 +5,7 @@ if check_collision == true
 else
     Fcoll = 0.0;
 end
-F = interp1(ft,Fe,t);
-F = F - Fcoll;
+F = interp1(ft,Fe,t) - Fcoll;
 
 FTpair = [FTpair,[F;t]];
 dy = zeros(2,1);
